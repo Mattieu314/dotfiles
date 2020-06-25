@@ -1,0 +1,170 @@
+# ---- Environment Snippets ----
+
+snippet beg "begin{} /end{}" bA
+\\begin{$1}
+	$0
+\\end{$1}
+endsnippet
+
+snippet enum "Enumerate" Ab
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet item "Itemize" Ab
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+snippet \sec "\Section{}" bA
+\section{$1}
+$0
+endsnippet
+
+snippet \ssec "\Section{}" bA
+\subsection{$1}
+$0
+endsnippet
+
+snippet \sssec "\Section{}" bA
+\subsubsection{$1}
+$0
+endsnippet
+
+
+
+# Useful Symbols
+snippet => "implies" A
+$\implies$
+endsnippet
+
+snippet -> "Leads to" A
+$\rightarrow$
+endsnippet
+
+snippet --> "Leads to 2" A
+$\longrightarrow$
+endsnippet
+
+
+# ----  Maths Snippets ----
+
+### Set up math context. E.g. real number etc.
+
+snippet \Re "Real Swap" A
+\operatorname{Re}
+endsnippet
+
+snippet \fRe "Fancy Real" A
+\Re
+endsnippet
+
+snippet \Im "Im Swap" A
+\operatorname{Im}
+endsnippet
+
+snippet \fIm "Fancy Im" A
+\Im
+endsnippet
+
+snippet \conj "Conjugate" A
+\overline{$1}$0
+endsnippet
+# ---- Geography Shortcuts ----
+
+# -- Word Shortcuts -- {{{
+snippet pg "physical geography"
+physical geography
+endsnippet
+
+snippet PG "Physical Geography"
+Physical Geography
+endsnippet
+
+snippet Pg "Physical geography"
+Physical geography
+endsnippet
+
+snippet hg "human geography"
+human geography
+endsnippet
+
+snippet HG "Human Geography"
+Human Geography
+endsnippet
+
+snippet Hg "Humans geography"
+Human geography
+endsnippet
+
+snippet ghg "greenhous gas" A
+greenhouse gas 
+endsnippet
+
+snippet ghgs "greenhouse gases" A
+greenhouse gases
+endsnippet
+
+snippet CC "climate change" A
+climate change
+endsnippet
+
+snippet NA "North America" 
+North America
+endsnippet
+
+snippet SA "South America"
+South America
+endsnippet
+
+snippet Ant "Antarctica"
+Antarctica
+endsnippet
+
+snippet milyr "million years" A
+million years 
+endsnippet
+
+snippet eqs "earthquakes" A
+earthquakes
+endsnippet
+
+snippet eq "earthquake"
+earthquake
+endsnippet
+# -- WS end }}}
+# ------ Writing Snippets ------ {{{
+
+snippet inc. "including" A
+including 
+endsnippet
+
+snippet w\ "with" A
+with
+endsnippet
+snippet " "Speech marks" A
+\`\` $1 '' $0
+endsnippet
+
+snippet % "Percent" iA
+\%
+endsnippet
+
+snippet # "Comment" bA
+%
+endsnippet
+# }}}
+
+
+
+
+
+
+
+snippet t
+${VISUAL: inside text}
+endsnippet
+
+
