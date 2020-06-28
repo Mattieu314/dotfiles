@@ -5,7 +5,6 @@ snippet beg "begin{} /end{}" bA
 	$0
 \\end{$1}
 endsnippet
-
 snippet enum "Enumerate" Ab
 \begin{enumerate}
 	\item $0
@@ -49,6 +48,23 @@ $\longrightarrow$
 endsnippet
 
 
+# ---- Formating ---- 
+
+snippet ** "Bold Text" Ai
+\textbf{$1}$0
+endsnippet
+
+snippet __ "Underline text" Ai
+\underline{$1}$0
+endsnippet
+
+snippet *** "Bold and italic" Ai
+\textbf{\textit{$1}}$0
+endsnippet
+
+snippet
+
+endsnippet
 # ----  Maths Snippets ----
 
 ### Set up math context. E.g. real number etc.
@@ -72,6 +88,16 @@ endsnippet
 snippet \conj "Conjugate" A
 \overline{$1}$0
 endsnippet
+
+snippet RR "Real" A
+\mathbb{R}
+endsnippet
+
+snippet CC "Complex" A
+\mathbb{C}
+endsnippet
+
+
 # ---- Geography Shortcuts ----
 
 # -- Word Shortcuts -- {{{
@@ -133,6 +159,10 @@ endsnippet
 
 snippet eq "earthquake"
 earthquake
+endsnippet
+
+snippet \mya "million years ago" A
+million years ago
 endsnippet
 # -- WS end }}}
 # ------ Writing Snippets ------ {{{

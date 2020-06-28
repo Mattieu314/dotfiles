@@ -13,6 +13,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
     Plug 'airblade/vim-gitgutter'
     "Plug 'junegunn/limelight.vim'              "Dims surrounding paraghraphs
 " --- Other helpful plugins ---
+    Plug 'jiangmiao/auto-pairs'
     "Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() }}     " Fuzzy Finder
     "Plug 'vimwiki/vimwiki'                     " Vim wiki
     "Plug 'terryma/vim-multiple-cursors'        " Sublime Text's multiple cursors
@@ -30,9 +31,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
     Plug 'KeitaNakamura/tex-conceal.vim'        " Mask latex commands with result
     "Plug 'matze/vim-tex-fold'                  " Light-weight folding for TeX documents
 " --- Python Programming ---
-    "Plug 'vim-python/python-syntax'            " Enhanced Python Syntax higlighting
+    Plug 'vim-python/python-syntax'            " Enhanced Python Syntax higlighting
     "Plug 'tmhedberg/SimpylFold'               " Simple, correct folding for Python
-    "Plug 'nvie/vim-flake8'                     " Runs python file through syntax and style checker
+    Plug 'nvie/vim-flake8'                     " Runs python file through syntax and style checker
 call plug#end()
     
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -68,6 +69,8 @@ call plug#end()
 "   map <Leader>sp :SplitVifm<CR>
 "   map <Leader>dv :DiffVifm<CR>
 "   map <Leader>tv :TabVifm<CR>
+" AutoPairs
+    autocmd Filetype tex let b:AutoPairs = {}
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " ------------ General Configuration ------------
@@ -78,13 +81,15 @@ call plug#end()
     set nocompatible 		" vIMproved
     set encoding=utf-8 			
     set clipboard=unnamedplus 	" Enable us of system clipboard
-    "set spelllang=en_gb 		" Spellchecking
     set wildmode=longest,list,full 	" Enable command mode autocomplete
     set nobackup
     set nowb
     set noswapfile
     filetype plugin on
     syntax on
+    set spelllang=en,fr
+    nnoremap <silent> <C-l> :set spell!<CR>
+    inoremap <silent> <C-l> <esc>:set spell!<CR>a
 
 " Turn on persistent undo
 
@@ -143,13 +148,12 @@ call plug#end()
     let g:coc_global_extensions = [
         \ 'coc-vimtex',
         \ 'coc-prettier',
+        \ 'coc-clangd'
         \]
 
 " Set up prettier (from README)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Format on save -- see coc-settings.json
-
-
 
 
 
