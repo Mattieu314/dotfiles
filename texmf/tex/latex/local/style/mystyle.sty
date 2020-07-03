@@ -1,0 +1,40 @@
+% This is my main style package
+%
+% (C) Matthew Harris
+%
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mystyle} [2020/05/28 v 0.1 Style file for my own purposes]
+
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{color}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\RequirePackage[gen]{eurosym}
+
+\RequirePackage{graphicx}
+\RequirePackage{times}
+\RequirePackage{subfiles}
+\RequirePackage[version=4]{mhchem}
+\RequirePackage{gensymb}
+\usepackage{geometry}
+\usepackage{marginnote}
+\RequirePackage[toc]{glossaries}
+
+\setlength{\parindent}{0pt}
+
+% Ensure utf-8 encoding of euro
+\DeclareUnicodeCharacter{20AC}{\euro{}}
+
+
+
+
+
+
+\newcommand{\myinclude}[1]{\subfile{../#1/#1.tex}}
+\newcommand{\define}[2]{\textbf{#1} --- \emph{#2}}
+\newcommand{\idefine}[4]{\textbf{#1} #2 \emph{#3} #4}
+
+\endinput

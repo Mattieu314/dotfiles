@@ -11,6 +11,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'ryanoasis/vim-devicons'
     Plug 'airblade/vim-gitgutter'
+    Plug 'altercation/vim-colors-solarized'
     "Plug 'junegunn/limelight.vim'              "Dims surrounding paraghraphs
 " --- Other helpful plugins ---
     Plug 'jiangmiao/auto-pairs'
@@ -34,19 +35,31 @@ call plug#begin('~/.local/share/nvim/site/plugged')
     Plug 'vim-python/python-syntax'            " Enhanced Python Syntax higlighting
     "Plug 'tmhedberg/SimpylFold'               " Simple, correct folding for Python
     Plug 'nvie/vim-flake8'                     " Runs python file through syntax and style checker
+
+" --- Markdown ---
+    Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'}
+" --- Tmux Integration ---
+    Plug 'christoomey/vim-tmux-navigator'
+" --- C++ ---
+    Plug 'bfrg/vim-cpp-modern'
 call plug#end()
     
 """""""""""""""""""""""""""""""""""""""""""""""""
-" ------------ Plugin Configuration -------------
-"""""""""""""""""""""""""""""""""""""""""""""""""
+" --"""""""""""""""""""""""""""""""""""""""""""""
 
 " NERDTree
 "   autcomd vimenter * NERDTree             " Uncomment to autostart NERDTree
     map <C-n> :NERDTreeToggle<CR>
     let NERDTreeShowLineNumbers=1
     let NERDTreeShowHidden=1
+    let g:NERDTreeWinSize=38
+    " Exit vim if NERDTree only window
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    map <leader>t :NERDTree<CR>
+
 " goyo.vim
     map <leader>g :Goyo \| set linebreak<CR>
+
 " Vimtex
     let g:tex_flavor='latex'
     let g:vimtex_view_method='zathura'
@@ -55,22 +68,34 @@ call plug#end()
 " tex-conceal.vim
     set conceallevel=2
     let g:tex_conceal="abdgms"
+
 " UltiSnips
     let g:UltiSnipsExpandTrigger = "<S-tab>"
-    let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-    let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+    let g:UltiSnipsJumpForwardTrigger = "<c-f>"
+    let g:UltiSnipsJumpBackwardTrigger = "<c-b"
     let g:UltiSnipsEditSplit = 'context'
+
 " Neomake
     call neomake#configure#automake('nrwi',500)
     let g:neomake_open_list = 2
+
 " Vifm
 "   map <Leader>vv :Vifm<CR>
 "   map <Leader>vs :VsplitVifm<CR>
 "   map <Leader>sp :SplitVifm<CR>
 "   map <Leader>dv :DiffVifm<CR>
 "   map <Leader>tv :TabVifm<CR>
+
 " AutoPairs
     autocmd Filetype tex let b:AutoPairs = {}
+
+" Markdown-preview
+    let g:mkdp_auto_close = 1   " Close preview after leaving md buffer
+    nmap :mpt <Plug>MarkdownPreviewToggle
+    let g:mkdp_browser = 'firefox'
+
+" vim-tmux-navigator
+    let g:tmux_navigator_save_on_switch=2       " Write all buffers before switch
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " ------------ General Configuration ------------
@@ -88,10 +113,44 @@ call plug#end()
     filetype plugin on
     syntax on
     set spelllang=en,fr
-    nnoremap <silent> <C-l> :set spell!<CR>
-    inoremap <silent> <C-l> <esc>:set spell!<CR>a
+    " nnoremap <silent> <C-l> :set spell!<CR>
+    " inoremap <silent> <C-l> <esc>:set spell!<CR>a
 
-" Turn on persistent undo
+" Some useful added/changed mappings (other than plugins above)
+    nmap <leader>z :tabnew ~/.config/nvim/init.vim <CR>
+    nmap <leader>n :tabnew ~/Desktop/Notes/Notes.md <CR>
+    nmap <leader>v :tabnew ~/Desktop/Notes/VimNotes.md <CR>
+    nmap <leader>q :tabclose <CR>
+    cmap W w
+    cmap Q q
+    cmap Qa qa
+    nmap <leader>r :set relativenumber!<CR>
+
+    nmap <leader>u <c-b>
+    nmap <leader>d <c-y>
+    
+
+    " Quickly create new v split
+    nmap <leader>\ <c-W>v
+    " Quicly create new h split
+    nmap <leader>- <C-W>s
+
+
+" Remap split movement to save key presses
+    nmap <c-j> <c-w>j
+    nmap <c-k> <c-w>k
+    nmap <c-l> <c-w>l
+    nmap <c-h> <c-w>h
+
+
+" Line numbers
+    augroup numbertoggle
+        autocmd!
+        autocmd BufEnter,FocusGained * set relativenumber
+        autocmd BufLeave,FocusLost * set norelativenumber
+    augroup END
+
+    " Turn on persistent undo
 
 " Lightline configuration and integration with coc.nvim
   let g:lightline = {
@@ -139,10 +198,16 @@ call plug#end()
 " -- Search --
     set incsearch 		" Search as characters are entered
     set hlsearch 		" Highlish search matches
+    set ignorecase      " Ignore case in searching 
     nmap cls :let @/ = ""<CR>     
     " ^ Clear search
 
 
+" -- Other --
+set scrolloff=8         "  Start scrolling when 8 lines from margins
+
+
+" --- Compilation in vim ---
 
 " Install coc extensions
     let g:coc_global_extensions = [
@@ -150,12 +215,6 @@ call plug#end()
         \ 'coc-prettier',
         \ 'coc-clangd'
         \]
-
-" Set up prettier (from README)
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" Format on save -- see coc-settings.json
-
-
 
 " ---- Coc.nvim configuration from README ----
 " TextEdit might fail if hidden is not set.

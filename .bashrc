@@ -24,18 +24,21 @@ alias sdn="sudo shutdown now"
 #Some useful aliases
 alias p="sudo pacman"
 alias SS="sudo systemctl"
-alias v="nvim"
-alias sv="sudo nvim"
+alias n="nvim"
+alias sn="sudo nvim"
 alias ka="kill all"
 alias g="git"
 alias mkd="mkdir -pv"
+alias c="clear"
+alias r="source ~/.bashrc"
+alias nbrc="nvim ~/.bashrc"
+alias nvrc="nvim ~/.config/nvim/init.vim"
+
+alias cnp="~/tmuxvim.sh"
 
 # Adding Colour
 alias ls='ls -hN --color=auto --group-directories-first'
 
 # Dofiles Git command
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-
-
-#Other
 
