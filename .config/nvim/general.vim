@@ -1,7 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""
 " ------------ General Configuration ------------
 """""""""""""""""""""""""""""""""""""""""""""""""
-
 " General NeoVim
     set nocompatible 		" vIMproved
     set encoding=utf-8 			

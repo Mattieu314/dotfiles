@@ -5,6 +5,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 " --- Interface and eye-candy ---
     Plug 'itchyny/lightline.vim'                " Light and configurable status bar
     Plug 'morhetz/gruvbox'                      " Colour scheme
+    Plug 'connorholyday/vim-snazzy'
     Plug 'scrooloose/nerdtree'                  " Sidebar file tree
     Plug 'junegunn/goyo.vim'                    " 'Focus mode' for writing
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight' 
@@ -19,14 +20,14 @@ call plug#begin('~/.local/share/nvim/site/plugged')
     "Plug 'vimwiki/vimwiki'                     " Vim wiki
     "Plug 'terryma/vim-multiple-cursors'        " Sublime Text's multiple cursors
     "Plug 'tpope/vim-eunuch'                    " Easy shell commands 
-    "Plug 'vifm/vifm.vim'                       " Terminal file manager inside vim
+    Plug 'vifm/vifm.vim'                       " Terminal file manager inside vim
 " --- General Coding Help ---
     Plug 'tpope/vim-commentary'                 " Easily comment out blocks of code 
     Plug 'SirVer/ultisnips'                     " Easy, fast snippets
     Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquerer of Completion
     Plug 'neomake/neomake'                      " Asyncrounous linting
     "Plug 'godlygeek/tabular'                   " Easy alignment of text
-    "Plug 'tpope/vim-surround'                  " Change surrouding charcaters easily
+    Plug 'tpope/vim-surround'                  " Change surrouding charcaters easily
 " --- LaTeX writing ---
     Plug 'lervag/vimtex'                        " Advanced latex support
     Plug 'KeitaNakamura/tex-conceal.vim'        " Mask latex commands with result
@@ -42,4 +43,8 @@ call plug#begin('~/.local/share/nvim/site/plugged')
     Plug 'christoomey/vim-tmux-navigator'
 " --- C++ ---
     Plug 'bfrg/vim-cpp-modern'
+" --- Debugger ---
+    Plug 'puremourning/vimspector'
 call plug#end()
+
+let g:vimspector_enable_mappings = 'HUMAN'

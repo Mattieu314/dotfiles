@@ -28,13 +28,13 @@
     "Backward Trigger <C-b>
 
 " Vifm --- <leader>f        (for filer)
-"   noremap <Leader>fv :Vifm<CR>
-"   noremap <Leader>f\ :VsplitVifm<CR>
-"   noremap <Leader>f- :SplitVifm<CR>
+    noremap <Leader>fv :Vifm<CR>
+    noremap <Leader>f\ :VsplitVifm<CR>
+    noremap <Leader>f- :SplitVifm<CR>
 "   noremap <Leader>dv :DiffVifm<CR>
-"   noremap <Leader>tf :TabVifm<CR>
+    noremap <Leader>tf :TabVifm<CR>
 
-
+    nnoremap <leader>au :UltiSnipsEdit<CR>
 
 " NERDTree
     noremap <C-n> :NERDTreeToggle<CR>
@@ -44,15 +44,19 @@
 " ----- My Shortucts -----
 " ----- With Leader ------
 
+" Note Tabs:
+    nnoremap <silent><leader>nv :tabnew ~/Desktop/Notes/VimNotes.md<CR>
+    nnoremap <silent><leader>ng :tabnew ~/Desktop/Notes/GeoNotes.md<CR>
+    nnoremap <silent><leader>ni :tabnew ~/Desktop/Notes/Ideas.md<CR>
+    nnoremap <silent><leader>nn :tabnew ~/Desktop/Notes/Notes.md<CR>
+    nnoremap <silent><leader>nl :tabnew ~/Desktop/LinuxLearn/Notes/linux.md<CR>
+    nnoremap <silent><leader>nc :tabnew ./notes.md<CR>
 " Compile/make shortcuts --- <leader>m
 
 " Preview shortcuts --- <leader>p
     nnoremap <leader>pm <Plug>MarkdownPreviewToggle
 
 " Tab shortcuts --- <leader>t
-    nnoremap <leader>tn :tabnew ~/Desktop/Notes/Notes.md<CR>
-    nnoremap <leader>tc :tabnew ~/.config/nvim/init.vim<CR>
-    nnoremap <leader>tv :tabnew ~/Desktop/Notes/VimNotes.md<CR>
     nnoremap <leader>tq :tabclose<CR>
     nnoremap <leader>tt :tabnew<CR>
    
@@ -67,11 +71,14 @@
     nnoremap <c-l> <c-w>l
     nnoremap <c-h> <c-w>h
 
-
 " Buffer shortcuts --- <leader>b
 
 " Other Vim shortcuts --- <leader>v
-    nnoremap <leader>ve :split ~/.config/nvim/init.vim<CR>
+    nnoremap <leader>vei :split ~/.config/nvim/init.vim<CR>
+    nnoremap <leader>vem :split ~/.config/nvim/mapping.vim<CR>
+    nnoremap <leader>vep :split ~/.config/nvim/plugs.vim<CR>
+    nnoremap <leader>vec :split ~/.config/nvim/plugconfig.vim<CR>
+    nnoremap <leader>veg :split ~/.config/nvim/general.vim<CR>
     nnoremap <leader>vr :source ~/.config/nvim/init.vim<CR>
     nnoremap <leader>vn :set relativenumber!<CR>
     " Clear search
@@ -80,7 +87,7 @@
 
 " Spell Checker
     noremap <silent><leader>vo :set spell!<CR>
-
+    inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 " -- Other mappings --
     noremap G G$
 
@@ -93,3 +100,24 @@
     cnoremap W w
     cnoremap Q q
     cnoremap Qa qa
+
+
+" Quicker
+    nnoremap <nowait><leader>w :w<CR>
+    nnoremap <nowait><leader>W :wq<CR>
+    nnoremap <nowait><leader>q :q<CR>
+
+
+" Insert mode
+" CTRL-L leave insert mode when 'insermode' det
+" CTRL_H same as <BS>
+" CTRL-M same as <CR>
+" CTRL-\ a-z reserved for extensions
+
+
+" Normal mode
+" CTRL-@ not used
+
+nnoremap <leader>at  :TmuxNavigatePrevious<CR>
+
+        

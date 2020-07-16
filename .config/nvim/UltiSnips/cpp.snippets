@@ -1,0 +1,19 @@
+global !p
+from py_snippet import*
+endglobal
+
+snippet incg "include guard" Ab
+// `!p snip.rv = snip.basename`.hpp
+#ifndef `!p snip.rv = (snip.basename).upper()`_HPP //include guard
+#define `!p snip.rv = (snip.basename).upper()`_HPP
+$0
+
+
+
+#endif
+endsnippet
+
+
+# snippet com "com" A
+# `!p snip.rv = comment_type(snip)`
+# endsnippet
